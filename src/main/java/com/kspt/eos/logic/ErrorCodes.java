@@ -20,6 +20,8 @@ public class ErrorCodes
     public static int minMaxTour = 15;
     public static int early = 16;
     public static int capacity = 17;
+    public static int nullptr = 18;
+    public static int error = 19;
 
     public static String getError(int num){
         switch (num){
@@ -57,6 +59,10 @@ public class ErrorCodes
                 return "Not ready";
             case 17:
                 return "Capacity is less then max tourists";
+            case 18:
+                return "Nullptr";
+            case 19:
+                return "Error";
         }
         return "Error!";
     }

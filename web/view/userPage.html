@@ -1,4 +1,17 @@
-<div>
-HUI
+<div style="padding-left: 30px;">
+    <h3>Welcome, {{user.user.name}}</h3>
+    Balance: {{user.user.money}} <br />
+    Your excursions:
+    <div ng-repeat="it in user.userExcursions">
+        {{it.name}} <br/>
+    </div>
+    <br />
+    List of excursions:
+    <div ng-repeat="it in user.allExcursions">
+        <div><input type="radio" ng-value="it.id" ng-model="$parent.role" ng-change="user.radioChanged()"/>{{it.name}}</div>
+    </div>
+    Description:  <span ng-bind="desc"></span>
+    <p>&nbsp;</p>
+    <button ng-click="user.addToExc()"> Add</button>
+    <button ng-click="user.delFromExc()"> Del</button>
 </div>
-

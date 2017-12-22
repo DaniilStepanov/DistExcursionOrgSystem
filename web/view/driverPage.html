@@ -1,0 +1,36 @@
+<div style="padding-left: 30px;">
+    <h3>Welcome, {{driver.user.name}}</h3>
+    Balance: {{driver.user.money}} <br />
+    <p>&nbsp;</p>
+
+    Model: {{driver.dr.vehicle.model}} <br/>
+    Capacity: {{driver.dr.vehicle.capacity}}<br/>
+    Numbers: {{driver.dr.vehicle.numbers}}<br/>
+    <div ng-if="driver.dr.vehicle.isChecked == true">
+        Checked <br/>
+    </div>
+    <div ng-if="driver.dr.vehicle.isChecked == false">
+        Not checked <br/>
+    </div>
+
+    <p>
+        <button ng-click="driver.addVehicle()">Add new vehicle</button> &nbsp;
+        <button ng-click="driver.checkVehicle()">Check vehicle</button>
+    </p>
+
+    <p> List of excursions:
+    <div ng-repeat="it in driver.allExcursions">
+        <div><input type="radio" ng-value="it.description" ng-model="$parent.role" ng-change="driver.radioChanged()"/>{{it.name}}
+        </div>
+    </div>
+    Description: <span ng-bind="desc"></span>
+
+    <div ng-if="driver.dr.givenPrice != 0">
+        You have an offer from {{driver.dr.excursion.name}} <br/>
+        Money: {{driver.dr.givenPrice}}
+        <p>
+            <button ng-click="driver.agree()">Yes</button>
+            <button ng-click="driver.disagree()">No</button>
+        </p>
+    </div>
+</div>

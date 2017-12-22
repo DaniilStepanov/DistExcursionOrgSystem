@@ -1,5 +1,10 @@
 package com.kspt.eos.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.kspt.eos.logic.LExcursion;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -32,27 +37,31 @@ public class Excursion {
     private int status;
 
     @Column(name = "DATE")
-    java.sql.Date departureDate;
+    private java.sql.Date departureDate;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "EXCURSION_PARTICIPANTS",
-            joinColumns = { @JoinColumn(name = "excursion") },
-            inverseJoinColumns = { @JoinColumn(name = "user") }
-    )
-    private ArrayList<User> travellers = new ArrayList<>();
 
-    @OneToOne
+    @OneToMany(fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SELECT)
+    private Set<User> users = new HashSet<>();
+
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="organizator_id")
     private Organizator organizator;
 
+    @JsonIgnore
     @ManyToOne
     private Driver driver;
 
     @OneToOne
     private Receipt receipt;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SELECT)
     private Set<ExcursionObject> objects;
+
+    private String description;
 
     public boolean isPay() {
         return isPay;
@@ -110,14 +119,6 @@ public class Excursion {
         this.departureDate = departureDate;
     }
 
-    public ArrayList<User> getTravellers() {
-        return travellers;
-    }
-
-    public void setTravellers(ArrayList<User> travellers) {
-        this.travellers = travellers;
-    }
-
     public Organizator getOrganizator() {
         return organizator;
     }
@@ -152,5 +153,27 @@ public class Excursion {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        LExcursion le = new LExcursion(this);
+        le.updateDescription();
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }

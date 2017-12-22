@@ -1,0 +1,15 @@
+<div style="padding-left: 30px;">&nbsp;</div>
+<br><br><br>
+<div style="text-align: left; padding-left: 243px;">Login:</div>
+<div style="text-align: left; padding-left: 243px;"><input type="text" value="" ng-model="login"/></div>
+<div style="text-align: left; padding-left: 243px;">Password:</div>
+<div style="text-align: left; padding-left: 243px;"><input type="password" value="" ng-model="passwd"/></div>
+<div style="text-align: left; padding-left: 243px;">Name (if register):</div>
+<div style="text-align: left; padding-left: 243px;"><input type="text" value="" ng-model="name"/></div>
+<div style="text-align: left;">&nbsp;</div>
+<div style="text-align: left;">&nbsp;</div>
+<div style="text-align: left;  padding-left: 230px;"><button ng-click="loginCtrl.signIn()" ng-enter="loginCtrl.signIn()">Sign In</button>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<button ng-click="loginCtrl.registerUser()">Register</button></div>
+<div style="text-align: left;">&nbsp;</div>
+<div style="text-align: left; padding-left: 365px;"><input type="radio" value="user" ng-model="role"/> As user</div>
+<div style="text-align: left; padding-left: 365px;"><input type="radio" value="org" ng-model="role"/> As organizator</div>
+<div style="text-align: left; padding-left: 365px;"><input type="radio" value="driver" ng-model="role"/> As driver</div>

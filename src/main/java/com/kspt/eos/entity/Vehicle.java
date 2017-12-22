@@ -3,11 +3,9 @@ package com.kspt.eos.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "VEHICLES")
 public class Vehicle {
 
     @Id
-    @Column(name = "ID")
     @GeneratedValue
     private Long id;
 
@@ -26,8 +24,6 @@ public class Vehicle {
     @Column(name = "ISCHECKED")
     private boolean isChecked;
 
-    @OneToOne
-    private Driver driver;
 
     public Long getId() {
         return id;
@@ -61,10 +57,6 @@ public class Vehicle {
         isChecked = checked;
     }
 
-    public Driver getDriver() {
-        return driver;
-    }
-
     public void setNumbers(String numbers) {
         this.numbers = numbers;
     }
@@ -77,7 +69,6 @@ public class Vehicle {
         this.capacity = capacity;
     }
 
-    public void setDriver(Driver driver) {
-        this.driver = driver;
-    }
+    public void setId(Long id) {this.id = id;}
+
 }

@@ -11,4 +11,5 @@ public interface OrganizatorRepository extends JpaRepository<Organizator, Long> 
     Optional<Organizator> findById(Long id);
     Optional<Organizator> findByExcursionId(Long id);
     Optional<Organizator> findByExcursionName(String name);
+    Optional<Organizator> findByUserLogin(String login);
 }

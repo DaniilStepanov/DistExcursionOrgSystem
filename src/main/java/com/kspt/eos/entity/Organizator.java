@@ -16,7 +16,7 @@ public class Organizator {
     @OneToOne
     private User user;
 
-    @OneToOne
+    @OneToOne(mappedBy = "organizator")
     private Excursion excursion;
 
     public User getUser() {

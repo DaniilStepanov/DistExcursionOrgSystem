@@ -1,5 +1,7 @@
 package com.kspt.eos.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,7 @@ public class Receipt {
     @GeneratedValue
     private Long id;
 
+    @JsonIgnore
     @OneToOne
     private Excursion excursion;
 

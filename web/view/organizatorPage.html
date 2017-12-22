@@ -1,0 +1,31 @@
+<div style="padding-left: 30px;">
+    <h3>Welcome, {{organizator.user.name}}</h3>
+    Balance: {{organizator.user.money}} <br />
+    <div ng-if="organizator.excursion == null">
+        Your excursion: None
+    </div>
+    <div ng-if="organizator.excursion != null">
+        Your excursion: {{organizator.excursion.name}} <br/>
+        Description:
+        {{organizator.excursion.description}}
+    </div>
+    <br />
+    List of drivers:
+    <div ng-repeat="it in organizator.drivers">
+        <div><input type="radio" ng-value="it.user.id" ng-model="$parent.role"/> {{it.user.name}}</div>
+    </div>
+    <p>&nbsp;</p>
+    Money:  <input type="text" value="" ng-model="money"/> <br/> <br/>
+    <button ng-click="organizator.sendOffer()"> Send Offer</button> <br/>
+    <span ng-if="organizator.excursion.status == 2">
+        <button ng-click="organizator.endExcursion()"> End excursion</button>
+    </span>
+    <span ng-if="organizator.excursion.status != 2">
+        <button ng-click="organizator.startExcursion()"> Start excursion</button>
+    </span>
+    <p>&nbsp;</p>
+    <input type="text" value="Excursion object description" ng-model="description"> <br/><br/>
+    <button ng-click="organizator.addExcursionObject()"> Add excursion object</button> <br /> <br />
+    <button ng-click="organizator.newExcursion()"> Create new excursion</button>
+</div>
+

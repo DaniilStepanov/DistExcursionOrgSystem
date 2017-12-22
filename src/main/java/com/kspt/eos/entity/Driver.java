@@ -20,15 +20,17 @@ public class Driver {
     @Column(name = "GIVENPRICE")
     private int givenPrice;
 
-    @JsonIgnore
     @OneToOne
     private User user;
 
-    @JsonIgnore
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
 
-    @JsonIgnore
+    public Long getId() {
+        return id;
+    }
+
     @OneToOne
     private Excursion excursion;
 
@@ -79,4 +81,7 @@ public class Driver {
     public void setExcursion(Excursion excursion) {
         this.excursion = excursion;
     }
+
+    public void setId(Long id) {this.id = id; }
+
 }
